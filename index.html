@@ -102,6 +102,7 @@
 
   <div id="responseText">Great! I will pick you up at 6 😄</div>
 
+  <!-- Confetti library -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <script>
@@ -110,10 +111,9 @@
       const yesButton = document.getElementById("yesButton");
       const responseText = document.getElementById("responseText");
 
-      noButton.addEventListener("mouseenter", () => {
+      function moveNoButton() {
         const buttonWidth = noButton.offsetWidth;
         const buttonHeight = noButton.offsetHeight;
-
         const safePadding = 20;
 
         const maxX = window.innerWidth - buttonWidth - safePadding;
@@ -124,7 +124,11 @@
 
         noButton.style.left = `${randX}px`;
         noButton.style.top = `${randY}px`;
-      });
+      }
+
+      // Support both desktop and mobile
+      noButton.addEventListener("mouseenter", moveNoButton);
+      noButton.addEventListener("click", moveNoButton);
 
       yesButton.addEventListener("click", () => {
         yesButton.style.display = "none";
