@@ -12,9 +12,9 @@
       padding: 0;
       min-height: 100vh;
       background-color: #fff0f6;
-      background-image: url('https://imgur.com/a/3TUQoal'); /* Chocolate texture */
+      background-image: url('https://i.imgur.com/U9knA4R.png'); /* Correct direct image link */
       background-repeat: repeat;
-      background-size: auto;
+      background-size: 120px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -25,6 +25,16 @@
       color: #d63384;
       margin: 20px;
       font-size: 6vw;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    h1 img {
+      height: 8vw;
+      max-height: 60px;
     }
 
     .button-container {
@@ -91,6 +101,10 @@
         left: 60%;
         top: 35%;
       }
+
+      h1 img {
+        height: 10vw;
+      }
     }
   </style>
 </head>
@@ -98,77 +112,75 @@
 
 <h1>
   Would you give me the honor to take you out on a date on Thursday?
-  <img src="https://i.imgur.com/pSHa9PN.png" alt="chocolate bar" style="height: 60px; vertical-align: middle; margin-left: 10px;">
+  <img src="https://i.imgur.com/U9knA4R.png" alt="chocolate bar" />
 </h1>
 
-  <div class="button-container">
-    <button id="yesButton">Yes</button>
-    <button id="noButton">No</button>
-  </div>
+<div class="button-container">
+  <button id="yesButton">Yes</button>
+  <button id="noButton">No</button>
+</div>
 
-  <div id="responseText">Great! I will pick you up at 6.</div>
+<div id="responseText">Great! I will pick you up at 6.</div>
 
-  <!-- Confetti library -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<!-- Confetti library -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <script>
-    window.onload = function () {
-      const noButton = document.getElementById("noButton");
-      const yesButton = document.getElementById("yesButton");
-      const responseText = document.getElementById("responseText");
+<script>
+  window.onload = function () {
+    const noButton = document.getElementById("noButton");
+    const yesButton = document.getElementById("yesButton");
+    const responseText = document.getElementById("responseText");
 
-      function moveNoButton() {
-        const buttonWidth = noButton.offsetWidth;
-        const buttonHeight = noButton.offsetHeight;
-        const maxOffset = 250; // maximum gentle offset
-        const padding = 20;
+    function moveNoButton() {
+      const buttonWidth = noButton.offsetWidth;
+      const buttonHeight = noButton.offsetHeight;
+      const maxOffset = 250;
+      const padding = 20;
 
-        const currentLeft = parseInt(noButton.style.left || noButton.offsetLeft);
-        const currentTop = parseInt(noButton.style.top || noButton.offsetTop);
+      const currentLeft = parseInt(noButton.style.left || noButton.offsetLeft);
+      const currentTop = parseInt(noButton.style.top || noButton.offsetTop);
 
-        const offsetX = Math.floor(Math.random() * (maxOffset * 2 + 1)) - maxOffset;
-        const offsetY = Math.floor(Math.random() * (maxOffset * 2 + 1)) - maxOffset;
+      const offsetX = Math.floor(Math.random() * (maxOffset * 2 + 1)) - maxOffset;
+      const offsetY = Math.floor(Math.random() * (maxOffset * 2 + 1)) - maxOffset;
 
-        let newLeft = currentLeft + offsetX;
-        let newTop = currentTop + offsetY;
+      let newLeft = currentLeft + offsetX;
+      let newTop = currentTop + offsetY;
 
-        // Constrain to stay inside viewport
-        newLeft = Math.min(Math.max(newLeft, padding), window.innerWidth - buttonWidth - padding);
-        newTop = Math.min(Math.max(newTop, padding), window.innerHeight - buttonHeight - padding);
+      newLeft = Math.min(Math.max(newLeft, padding), window.innerWidth - buttonWidth - padding);
+      newTop = Math.min(Math.max(newTop, padding), window.innerHeight - buttonHeight - padding);
 
-        noButton.style.left = `${newLeft}px`;
-        noButton.style.top = `${newTop}px`;
-      }
+      noButton.style.left = `${newLeft}px`;
+      noButton.style.top = `${newTop}px`;
+    }
 
-      // Handle both mouse and touch
-      noButton.addEventListener("mouseenter", moveNoButton);
-      noButton.addEventListener("click", moveNoButton);
+    noButton.addEventListener("mouseenter", moveNoButton);
+    noButton.addEventListener("click", moveNoButton);
 
-yesButton.addEventListener("click", () => {
-  yesButton.style.display = "none";
-  noButton.style.display = "none";
-  responseText.style.display = "block";
+    yesButton.addEventListener("click", () => {
+      yesButton.style.display = "none";
+      noButton.style.display = "none";
+      responseText.style.display = "block";
 
-  const img = new Image();
-  img.src = "https://i.imgur.com/U9knA4R.png";
-  img.onload = () => {
-    confetti({
-      particleCount: 100,
-      spread: 100,
-      origin: { y: 0.6 },
-      shapes: ['image'],
-      shapeOptions: {
-        image: [{
-          src: img.src,
-          width: 32,
-          height: 32
-        }]
-      }
+      const img = new Image();
+      img.src = "https://i.imgur.com/U9knA4R.png";
+      img.onload = () => {
+        confetti({
+          particleCount: 100,
+          spread: 100,
+          origin: { y: 0.6 },
+          shapes: ['image'],
+          shapeOptions: {
+            image: [{
+              src: img.src,
+              width: 32,
+              height: 32
+            }]
+          }
+        });
+      };
     });
   };
-});
-    };
-  </script>
+</script>
 
 </body>
 </html>
