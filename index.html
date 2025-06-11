@@ -96,7 +96,10 @@
 </head>
 <body>
 
-  <h1>Would you give me the honor to take you out on a date on Thursday?</h1>
+<h1>
+  Would you give me the honor to take you out on a date on Thursday?
+  <img src="https://i.imgur.com/pSHa9PN.png" alt="chocolate bar" style="height: 60px; vertical-align: middle; margin-left: 10px;">
+</h1>
 
   <div class="button-container">
     <button id="yesButton">Yes</button>
@@ -141,17 +144,29 @@
       noButton.addEventListener("mouseenter", moveNoButton);
       noButton.addEventListener("click", moveNoButton);
 
-      yesButton.addEventListener("click", () => {
-        yesButton.style.display = "none";
-        noButton.style.display = "none";
-        responseText.style.display = "block";
+yesButton.addEventListener("click", () => {
+  yesButton.style.display = "none";
+  noButton.style.display = "none";
+  responseText.style.display = "block";
 
-        confetti({
-          particleCount: 200,
-          spread: 100,
-          origin: { y: 0.6 }
-        });
-      });
+  const img = new Image();
+  img.src = "https://i.imgur.com/U9knA4R.png";
+  img.onload = () => {
+    confetti({
+      particleCount: 100,
+      spread: 100,
+      origin: { y: 0.6 },
+      shapes: ['image'],
+      shapeOptions: {
+        image: [{
+          src: img.src,
+          width: 32,
+          height: 32
+        }]
+      }
+    });
+  };
+});
     };
   </script>
 
