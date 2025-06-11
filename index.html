@@ -51,17 +51,25 @@
     h1 {
       color: #d63384;
       margin: 20px;
-      font-size: 6vw;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      text-align: center;
       gap: 10px;
     }
 
-    h1 img {
-      height: 8vw;
-      max-height: 60px;
+    .poem-line {
+      width: 100%;
+      text-align: center;
+      font-size: 4.5vw;
+      line-height: 1.4;
+    }
+
+    @media (min-width: 768px) {
+      .poem-line {
+        font-size: 2vw;
+      }
     }
 
     .button-container {
@@ -164,21 +172,16 @@
         left: 60%;
         top: 35%;
       }
-
-      h1 img {
-        height: 10vw;
-      }
     }
   </style>
 </head>
 <body>
 
 <h1>
-<h1>
-  I’ve got your sweets all picked out,<br>
-  but something’s missing I’ve no doubt<br>
-  It’s your smile I want to see<br>
-  So, how about a date tomorrow with me?
+  <div class="poem-line">I’ve got your sweets all picked out,</div>
+  <div class="poem-line">but something’s missing—I’ve no doubt.</div>
+  <div class="poem-line">It’s your smile I want to see...</div>
+  <div class="poem-line">So, how about a date tomorrow—with me? 🍫😊</div>
 </h1>
 
 <div class="button-container">
@@ -192,7 +195,7 @@
 <div id="popupMessage">
   <div class="popup-content">
     <span class="close-btn" id="closePopup">&times;</span>
-    <p>🍫 Great! I will pick you up at 6. 💖</p>
+    <p>🍫 Great! I will pick you up at 5. 💖</p>
   </div>
 </div>
 
