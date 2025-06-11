@@ -5,23 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>date with tuna :3</title>
   <style>
-body {
-  font-family: 'Segoe UI', sans-serif;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background-color: #fff0f6;
-  background-image: url('https://i.imgur.com/8qibagt.png');
-  background-repeat: repeat;
-  background-size: 60px; /* Smaller tiles */
-  background-blend-mode: multiply; /* Mix with color */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background-color: #fff0f6;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 0;
+    }
 
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background-image: url('https://i.imgur.com/8qibagt.png');
+      background-repeat: repeat;
+      background-size: 60px;
+      opacity: 0.3;
+      z-index: -1;
+      animation: scrollCats 60s linear infinite;
+    }
+
+    @keyframes scrollCats {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(-50px, -50px);
+      }
+    }
 
     h1 {
       color: #d63384;
