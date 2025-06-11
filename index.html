@@ -28,10 +28,10 @@
       left: 0;
       width: 200%;
       height: 200%;
-      background-image: url('https://i.imgur.com/8qibagt.png');
+      background-image: url('https://i.imgur.com/3y5bDym.png');
       background-repeat: repeat;
-      background-size: 60px;
-      opacity: 0.3;
+      background-size: 120px;
+      opacity: 0.2;
       z-index: -1;
       animation: scrollCats 60s linear infinite;
     }
@@ -106,6 +106,42 @@
       padding: 0 1rem;
     }
 
+    #popupMessage {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 240, 246, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .popup-content {
+      background-color: #ffe0f0;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      max-width: 80%;
+      text-align: center;
+      font-size: 1.5rem;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #d63384;
+    }
+
     @media (max-width: 600px) {
       .button-container {
         height: 200px;
@@ -146,6 +182,14 @@
 
 <div id="responseText">Great! I will pick you up at 6.</div>
 
+<!-- Pop-up Message -->
+<div id="popupMessage">
+  <div class="popup-content">
+    <span class="close-btn" id="closePopup">&times;</span>
+    <p>🍫 Yay! Can’t wait for our sweet date! 💖</p>
+  </div>
+</div>
+
 <!-- Confetti library -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
@@ -154,6 +198,8 @@
     const noButton = document.getElementById("noButton");
     const yesButton = document.getElementById("yesButton");
     const responseText = document.getElementById("responseText");
+    const popup = document.getElementById("popupMessage");
+    const closePopup = document.getElementById("closePopup");
 
     function moveNoButton() {
       const buttonWidth = noButton.offsetWidth;
@@ -202,6 +248,17 @@
           }
         });
       };
+
+      // Show pop-up after a short delay
+      setTimeout(() => {
+        popup.style.visibility = "visible";
+        popup.style.opacity = "1";
+      }, 1000);
+    });
+
+    closePopup.addEventListener("click", () => {
+      popup.style.opacity = "0";
+      setTimeout(() => popup.style.visibility = "hidden", 400);
     });
   };
 </script>
